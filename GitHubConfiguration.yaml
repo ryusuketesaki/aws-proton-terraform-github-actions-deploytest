@@ -20,7 +20,9 @@ Resources:
         Statement:
           - Effect: Allow
             Action: sts:AssumeRoleWithWebIdentity
-#             Principal:
+            Principal:
+              Service: 
+                - "ec2.amazonaws.com"
 #               Federated: !Ref GithubOidc
             Condition:
               StringLike:
