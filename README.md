@@ -24,9 +24,9 @@ When you see these strings in the instructions below, you should replace them wi
    forked the repo in the previous step. For information on how to set that up see [this documentation](https://docs.aws.amazon.com/dtconsole/latest/userguide/connections-create.html).
 4. Run GitHubConfiguration.yaml through CloudFormation (https://aws.amazon.com/cloudformation/). This will create a role that GitHub Actions will use to provision resources into your account, as well as an S3 bucket to store Terraform Open Source state files. Make sure you use all lowercase names in the stack name, as we will use it to create an S3 bucket to save your state files.
 ```
-aws cloudformation create-stack --stack-name aws-proton-terraform-role-stack \
+aws cloudformation create-stack --stack-name aws-proton-terraform-role-deploytest \
    --template-body file:///$PWD/GitHubConfiguration.yaml \
-   --parameters ParameterKey=FullRepoName,ParameterValue=$GITHUB_USER/aws-proton-terraform-github-actions-sample \
+   --parameters ParameterKey=FullRepoName,ParameterValue=$GITHUB_USER/aws-proton-terraform-github-actions-deploytest　\
    --capabilities CAPABILITY_NAMED_IAM
 ```
 5. Open the file `env_config.json`. Add a new object to the configuration dictionary where the key is `ENVIRONMENT_NAME`, `role` is the `Role` output from the stack created in (3), and the region with `REGION`. This will tell Terraform the role and region to use for deployments. You can use different roles for each environment by adding them to this file
