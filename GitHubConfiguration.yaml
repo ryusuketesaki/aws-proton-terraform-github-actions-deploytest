@@ -14,7 +14,7 @@ Resources:
     # recommend you scope down the role permissions to the resources that will be used
     # in your Proton templates
     Properties:
-      RoleName: ExampleGithubRole
+      RoleName: ExampleGithubRole-deploytest
       ManagedPolicyArns: [arn:aws:iam::aws:policy/AdministratorAccess]
       AssumeRolePolicyDocument:
         Statement:
@@ -26,15 +26,15 @@ Resources:
               StringLike:
                 token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*
 
-  GithubOidc:
-    # This identity provider is required to accept OpenID Connect credentials
-    # from GitHub
-    Type: AWS::IAM::OIDCProvider
-    Properties:
-      Url: https://token.actions.githubusercontent.com
-      ThumbprintList: [6938fd4d98bab03faadb97b34396831e3780aea1]
-      ClientIdList:
-        - sts.amazonaws.com
+#   GithubOidc:
+#     # This identity provider is required to accept OpenID Connect credentials
+#     # from GitHub
+#     Type: AWS::IAM::OIDCProvider
+#     Properties:
+#       Url: https://token.actions.githubusercontent.com
+#       ThumbprintList: [6938fd4d98bab03faadb97b34396831e3780aea1]
+#       ClientIdList:
+#         - sts.amazonaws.com
 
   StateFileBucket:
     # This bucket will be used to store your Terraform Open Source state files
