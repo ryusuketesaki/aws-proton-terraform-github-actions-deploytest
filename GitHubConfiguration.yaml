@@ -24,6 +24,7 @@ Resources:
               Service: 
                 - "ec2.amazonaws.com"
 #               Federated: !Ref GithubOidc
+# deploy時はダミーデータで構築し、あとから`Federated: !Ref GithubOidc`に変更
             Condition:
               StringLike:
                 token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*
