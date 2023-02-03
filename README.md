@@ -26,7 +26,7 @@ When you see these strings in the instructions below, you should replace them wi
 ```
 aws cloudformation create-stack --stack-name aws-proton-terraform-role-deploytest \
    --template-body file:///$PWD/GitHubConfiguration.yaml \
-   --parameters ParameterKey=FullRepoName,ParameterValue=$GITHUB_USER/aws-proton-terraform-github-actions-deploytest　\
+   --parameters ParameterKey=FullRepoName,ParameterValue=ryusuketesaki/aws-proton-terraform-github-actions-deploytest　\
    --capabilities CAPABILITY_NAMED_IAM
 ```
 5. Open the file `env_config.json`. Add a new object to the configuration dictionary where the key is `ENVIRONMENT_NAME`, `role` is the `Role` output from the stack created in (3), and the region with `REGION`. This will tell Terraform the role and region to use for deployments. You can use different roles for each environment by adding them to this file
